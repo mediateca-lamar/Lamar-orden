@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Solicitudes y Reportes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navegación -->
+    <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                        <i class="fas fa-file-signature text-xl"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-blue-900">Portal de Trámites</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-blue-600 transition font-medium">Inicio</a>
+                    <a href="#departamentos" class="text-gray-600 hover:text-blue-600 transition font-medium">Departamentos</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-blue-600 transition font-medium">Contacto</a>
+                </div>
+                <button class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="relative bg-blue-900 py-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="h-full w-full" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Central de Solicitudes y Reportes</h1>
+            <p class="text-blue-100 text-xl max-w-2xl mx-auto mb-10">Gestiona tus trámites académicos y reportes institucionales de manera rápida y sencilla.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#departamentos" class="bg-white text-blue-900 px-10 py-4 rounded-full font-bold hover:bg-blue-50 transition shadow-lg">Iniciar una Solicitud</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Departamentos -->
+    <section id="departamentos" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Departamentos de Atención</h2>
+            <p class="text-gray-600">Selecciona el área correspondiente para realizar tu trámite</p>
+            <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- CAPI -->
+            <div class="glass-card rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group border-t-4 border-t-blue-500">
+                <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <i class="fas fa-brain text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">CAPI</h3>
+                <p class="text-gray-600 mb-6">Centro de Atención Psicoterapéutica Integral. Reportes de bienestar y solicitudes de atención psicológica.</p>
+                <div class="space-y-3">
+                    <a href="https://forms.gle/ejemplo1" target="_blank" class="flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
+                        <i class="fas fa-edit mr-2"></i> Llenar Formulario
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tutorías -->
+            <div class="glass-card rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group border-t-4 border-t-green-500">
+                <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                    <i class="fas fa-user-graduate text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Tutorías</h3>
+                <p class="text-gray-600 mb-6">Acompañamiento académico. Realiza aquí tu solicitud de tutor o reporta incidencias de desempeño.</p>
+                <div class="space-y-3">
+                    <a href="https://forms.gle/ejemplo2" target="_blank" class="flex items-center justify-center bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition">
+                        <i class="fas fa-clipboard-check mr-2"></i> Registrar Solicitud
+                    </a>
+                </div>
+            </div>
+
+            <!-- Servicios Escolares -->
+            <div class="glass-card rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group border-t-4 border-t-purple-500">
+                <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                    <i class="fas fa-file-alt text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Trámites Varios</h3>
+                <p class="text-gray-600 mb-6">Gestión de constancias y reportes administrativos generales ante la coordinación.</p>
+                <div class="space-y-3">
+                    <a href="#" class="flex items-center justify-center bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-purple-700 transition">
+                        <i class="fas fa-external-link-alt mr-2"></i> Ir al Formulario
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección Informativa -->
+    <section class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <div class="rounded-2xl overflow-hidden shadow-2xl bg-white p-2">
+                    <img src="img/institucion.jpg" alt="Campus Institucional" class="w-full h-auto rounded-xl" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Atención Integral</h2>
+                <p class="text-gray-700 text-lg mb-6">Esta plataforma es el canal oficial para canalizar tus necesidades a los departamentos correspondientes. Asegúrate de llenar los datos correctamente para agilizar tu respuesta.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <p class="text-blue-600 font-bold text-2xl">24/7</p>
+                        <p class="text-gray-500 text-sm">Disponibilidad de plataforma</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm">
+                        <p class="text-blue-600 font-bold text-2xl">100%</p>
+                        <p class="text-gray-500 text-sm">Digital y seguro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-white border-t border-gray-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8">
+                <p class="font-bold text-gray-900 text-lg">Institución Educativa</p>
+                <p class="text-gray-500 italic">Departamento de Atención Estudiantil</p>
+                <p class="text-gray-500 mt-2">Calle Principal #123, Ciudad, País</p>
+                <p class="text-gray-500">Correo de soporte: soporte.tramites@institucion.edu</p>
+            </div>
+            <div class="border-t border-gray-100 pt-8">
+                <p class="text-gray-400 text-sm">© 2024 Sistema de Reportes Institucionales.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
