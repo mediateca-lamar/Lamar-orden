@@ -16,6 +16,9 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(229, 231, 235, 0.5);
         }
+        .modal-active {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -35,9 +38,6 @@
                     <a href="#departamentos" class="text-gray-600 hover:text-blue-600 transition font-medium">Departamentos</a>
                     <a href="#contacto" class="text-gray-600 hover:text-blue-600 transition font-medium">Contacto</a>
                 </div>
-                <button class="md:hidden text-gray-600">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
             </div>
         </div>
     </nav>
@@ -54,7 +54,7 @@
             <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Central de Solicitudes y Reportes</h1>
             <p class="text-blue-100 text-xl max-w-2xl mx-auto mb-10">Gestiona tus trámites académicos y reportes institucionales de manera rápida y sencilla.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#departamentos" class="bg-white text-blue-900 px-10 py-4 rounded-full font-bold hover:bg-blue-50 transition shadow-lg">Iniciar una Solicitud</a>
+                <a href="#departamentos" class="bg-white text-blue-900 px-10 py-4 rounded-full font-bold hover:bg-blue-50 transition shadow-lg">Ver Departamentos</a>
             </div>
         </div>
     </header>
@@ -63,56 +63,79 @@
     <section id="departamentos" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">Departamentos de Atención</h2>
-            <p class="text-gray-600">Selecciona el área correspondiente para realizar tu trámite</p>
+            <p class="text-gray-600">Haz clic en un departamento para ver más información y formularios disponibles.</p>
             <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mt-4"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- CAPI -->
-            <div class="glass-card rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group border-t-4 border-t-blue-500">
+            <!-- CAPI Card -->
+            <button onclick="openModal('capi')" class="text-left glass-card rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 border-t-blue-500">
                 <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <i class="fas fa-brain text-2xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">CAPI</h3>
-                <p class="text-gray-600 mb-6">Centro de Atención Psicoterapéutica Integral. Reportes de bienestar y solicitudes de atención psicológica.</p>
-                <div class="space-y-3">
-                    <a href="https://forms.gle/ejemplo1" target="_blank" class="flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">
-                        <i class="fas fa-edit mr-2"></i> Llenar Formulario
-                    </a>
-                </div>
-            </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">CAPI</h3>
+                <p class="text-gray-600 text-sm">Centro de Atención Psicoterapéutica Integral.</p>
+                <p class="mt-4 text-blue-600 font-semibold text-sm">Ver detalles <i class="fas fa-arrow-right ml-1"></i></p>
+            </button>
 
-            <!-- Tutorías -->
-            <div class="glass-card rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group border-t-4 border-t-green-500">
+            <!-- Tutorías Card -->
+            <button onclick="openModal('tutorias')" class="text-left glass-card rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 border-t-green-500">
                 <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
                     <i class="fas fa-user-graduate text-2xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Tutorías</h3>
-                <p class="text-gray-600 mb-6">Acompañamiento académico. Realiza aquí tu solicitud de tutor o reporta incidencias de desempeño.</p>
-                <div class="space-y-3">
-                    <a href="https://forms.gle/ejemplo2" target="_blank" class="flex items-center justify-center bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition">
-                        <i class="fas fa-clipboard-check mr-2"></i> Registrar Solicitud
-                    </a>
-                </div>
-            </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Tutorías</h3>
+                <p class="text-gray-600 text-sm">Acompañamiento académico y orientación.</p>
+                <p class="mt-4 text-green-600 font-semibold text-sm">Ver detalles <i class="fas fa-arrow-right ml-1"></i></p>
+            </button>
 
-            <!-- Servicios Escolares -->
-            <div class="glass-card rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group border-t-4 border-t-purple-500">
+            <!-- Trámites Varios Card -->
+            <button onclick="openModal('tramites')" class="text-left glass-card rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 border-t-purple-500">
                 <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
                     <i class="fas fa-file-alt text-2xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Trámites Varios</h3>
-                <p class="text-gray-600 mb-6">Gestión de constancias y reportes administrativos generales ante la coordinación.</p>
-                <div class="space-y-3">
-                    <a href="#" class="flex items-center justify-center bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-purple-700 transition">
-                        <i class="fas fa-external-link-alt mr-2"></i> Ir al Formulario
-                    </a>
-                </div>
-            </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Trámites Varios</h3>
+                <p class="text-gray-600 text-sm">Gestión de constancias y reportes administrativos.</p>
+                <p class="mt-4 text-purple-600 font-semibold text-sm">Ver detalles <i class="fas fa-arrow-right ml-1"></i></p>
+            </button>
 
         </div>
     </section>
+
+    <!-- Modal Template -->
+    <div id="deptModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl transform transition-all animate-in fade-in zoom-in duration-300">
+            <!-- Modal Header -->
+            <div id="modalHeader" class="p-6 text-white flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div id="modalIcon" class="text-2xl"></div>
+                    <h3 id="modalTitle" class="text-2xl font-bold">Título</h3>
+                </div>
+                <button onclick="closeModal()" class="text-white/80 hover:text-white transition">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-8">
+                <div class="mb-8">
+                    <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Sobre este departamento</h4>
+                    <p id="modalDescription" class="text-gray-700 leading-relaxed"></p>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Formularios y Enlaces</h4>
+                    <div id="modalLinks" class="space-y-3">
+                        <!-- Links will be injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-end">
+                <button onclick="closeModal()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition">Cerrar</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Sección Informativa -->
     <section class="bg-gray-100 py-16">
@@ -122,17 +145,17 @@
                     <img src="img/institucion.jpg" alt="Campus Institucional" class="w-full h-auto rounded-xl" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
                 </div>
             </div>
-            <div class="w-full md:w-1/2">
+            <div class="w-full md:w-1/2 text-center md:text-left">
                 <h2 class="text-3xl font-bold text-blue-900 mb-4">Atención Integral</h2>
                 <p class="text-gray-700 text-lg mb-6">Esta plataforma es el canal oficial para canalizar tus necesidades a los departamentos correspondientes. Asegúrate de llenar los datos correctamente para agilizar tu respuesta.</p>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-white p-4 rounded-xl shadow-sm">
                         <p class="text-blue-600 font-bold text-2xl">24/7</p>
-                        <p class="text-gray-500 text-sm">Disponibilidad de plataforma</p>
+                        <p class="text-gray-500 text-sm">Disponibilidad</p>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm">
                         <p class="text-blue-600 font-bold text-2xl">100%</p>
-                        <p class="text-gray-500 text-sm">Digital y seguro</p>
+                        <p class="text-gray-500 text-sm">Digital</p>
                     </div>
                 </div>
             </div>
@@ -146,7 +169,6 @@
                 <p class="font-bold text-gray-900 text-lg">Institución Educativa</p>
                 <p class="text-gray-500 italic">Departamento de Atención Estudiantil</p>
                 <p class="text-gray-500 mt-2">Calle Principal #123, Ciudad, País</p>
-                <p class="text-gray-500">Correo de soporte: soporte.tramites@institucion.edu</p>
             </div>
             <div class="border-t border-gray-100 pt-8">
                 <p class="text-gray-400 text-sm">© 2024 Sistema de Reportes Institucionales.</p>
@@ -154,5 +176,90 @@
         </div>
     </footer>
 
+    <!-- Logic for Modals -->
+    <script>
+        const departments = {
+            capi: {
+                title: 'CAPI',
+                description: 'El Centro de Atención Psicoterapéutica Integral brinda apoyo emocional y psicológico. Puedes realizar reportes de bienestar o solicitar una cita de valoración inicial.',
+                color: 'bg-blue-600',
+                icon: '<i class="fas fa-brain"></i>',
+                links: [
+                    { text: 'Solicitud de Cita Psicológica', url: 'https://forms.gle/ejemploCAPI1', icon: 'fa-calendar-plus' },
+                    { text: 'Reporte de Bienestar Estudiantil', url: 'https://forms.gle/ejemploCAPI2', icon: 'fa-heartbeat' }
+                ]
+            },
+            tutorias: {
+                title: 'Tutorías',
+                description: 'El departamento de tutorías se encarga de dar seguimiento a tu trayectoria académica. Aquí puedes reportar dificultades en materias o solicitar un tutor asignado.',
+                color: 'bg-green-600',
+                icon: '<i class="fas fa-user-graduate"></i>',
+                links: [
+                    { text: 'Registro de Solicitud de Tutor', url: 'https://forms.gle/ejemploTut1', icon: 'fa-user-plus' },
+                    { text: 'Reporte de Desempeño Académico', url: 'https://forms.gle/ejemploTut2', icon: 'fa-chart-line' }
+                ]
+            },
+            tramites: {
+                title: 'Trámites Varios',
+                description: 'Gestión administrativa general. Utiliza estos formularios para reportar incidencias administrativas o solicitar constancias específicas ante la coordinación.',
+                color: 'bg-purple-600',
+                icon: '<i class="fas fa-file-alt"></i>',
+                links: [
+                    { text: 'Formulario de Solicitud General', url: 'https://forms.gle/ejemploGen1', icon: 'fa-paper-plane' },
+                    { text: 'Reporte de Incidencias', url: 'https://forms.gle/ejemploGen2', icon: 'fa-exclamation-triangle' }
+                ]
+            }
+        };
+
+        function openModal(id) {
+            const modal = document.getElementById('deptModal');
+            const dept = departments[id];
+            
+            document.getElementById('modalTitle').innerText = dept.title;
+            document.getElementById('modalDescription').innerText = dept.description;
+            document.getElementById('modalIcon').innerHTML = dept.icon;
+            
+            const header = document.getElementById('modalHeader');
+            header.className = `p-6 text-white flex justify-between items-center ${dept.color}`;
+            
+            const linksContainer = document.getElementById('modalLinks');
+            linksContainer.innerHTML = '';
+            
+            dept.links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.target = '_blank';
+                a.className = 'flex items-center p-4 rounded-xl border border-gray-100 hover:bg-gray-50 hover:border-blue-200 transition group';
+                a.innerHTML = `
+                    <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center mr-4 group-hover:bg-white group-hover:shadow-sm">
+                        <i class="fas ${link.icon} text-gray-500"></i>
+                    </div>
+                    <span class="font-semibold text-gray-700">${link.text}</span>
+                    <i class="fas fa-chevron-right ml-auto text-gray-300"></i>
+                `;
+                linksContainer.appendChild(a);
+            });
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('modal-active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('deptModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('modal-active');
+        }
+
+        // Close modal on escape key or click outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('deptModal');
+            if (event.target == modal) closeModal();
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
 </body>
 </html>
