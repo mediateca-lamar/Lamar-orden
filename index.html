@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Solicitudes y Reportes</title>
+    <title>Plataforma de Solicitudes y Reportes CAPI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -19,6 +19,12 @@
         .modal-active {
             overflow: hidden;
         }
+        /* Ajuste para que los enlaces largos no rompan el diseño en móviles */
+        .link-text-container {
+            word-break: break-word;
+            flex: 1;
+            padding-right: 10px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -28,14 +34,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
-                        <i class="fas fa-file-signature text-xl"></i>
+                    <div class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center text-white">
+                        <i class="fas fa-university text-xl"></i>
                     </div>
-                    <span class="font-bold text-xl tracking-tight text-blue-900">Portal de Trámites</span>
+                    <span class="font-bold text-xl tracking-tight text-blue-900">Portal CAPI</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#inicio" class="text-gray-600 hover:text-blue-600 transition font-medium">Inicio</a>
-                    <a href="#departamentos" class="text-gray-600 hover:text-blue-600 transition font-medium">Departamentos</a>
+                    <a href="#departamentos" class="text-gray-600 hover:text-blue-600 transition font-medium">Servicios</a>
                     <a href="#contacto" class="text-gray-600 hover:text-blue-600 transition font-medium">Contacto</a>
                 </div>
             </div>
@@ -52,9 +58,9 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">Central de Solicitudes y Reportes</h1>
-            <p class="text-blue-100 text-xl max-w-2xl mx-auto mb-10">Gestiona tus trámites académicos y reportes institucionales de manera rápida y sencilla.</p>
+            <p class="text-blue-100 text-xl max-w-2xl mx-auto mb-10">Gestiona tus trámites académicos, reportes institucionales y solicitudes de atención psicopedagógica de manera rápida y confidencial.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#departamentos" class="bg-white text-blue-900 px-10 py-4 rounded-full font-bold hover:bg-blue-50 transition shadow-lg">Ver Departamentos</a>
+                <a href="#departamentos" class="bg-white text-blue-900 px-10 py-4 rounded-full font-bold hover:bg-blue-50 transition shadow-lg">Ver Servicios Disponibles</a>
             </div>
         </div>
     </header>
@@ -62,41 +68,41 @@
     <!-- Departamentos -->
     <section id="departamentos" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Departamentos de Atención</h2>
-            <p class="text-gray-600">Haz clic en un departamento para ver más información y formularios disponibles.</p>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Módulos de Atención</h2>
+            <p class="text-gray-600">Haz clic en tu perfil para ver los formularios y protocolos disponibles.</p>
             <div class="h-1 w-20 bg-blue-600 mx-auto rounded-full mt-4"></div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- CAPI Card -->
+            <!-- Usuarios CAPI Card -->
             <button onclick="openModal('capi')" class="text-left glass-card rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 border-t-blue-500">
                 <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <i class="fas fa-brain text-2xl"></i>
+                    <i class="fas fa-users text-2xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-2">CAPI</h3>
-                <p class="text-gray-600 text-sm">Centro de Atención Psicoterapéutica Integral.</p>
-                <p class="mt-4 text-blue-600 font-semibold text-sm">Ver detalles <i class="fas fa-arrow-right ml-1"></i></p>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Usuarios CAPI</h3>
+                <p class="text-gray-600 text-sm">Servicios, solicitudes y atención psicopedagógica integral para la comunidad estudiantil.</p>
+                <p class="mt-4 text-blue-600 font-semibold text-sm">Ver formularios <i class="fas fa-arrow-right ml-1"></i></p>
             </button>
 
-            <!-- Tutorías Card -->
-            <button onclick="openModal('tutorias')" class="text-left glass-card rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 border-t-green-500">
+            <!-- Practicantes Card -->
+            <button onclick="openModal('practicantes')" class="text-left glass-card rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 border-t-green-500">
                 <div class="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
                     <i class="fas fa-user-graduate text-2xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-2">Tutorías</h3>
-                <p class="text-gray-600 text-sm">Acompañamiento académico y orientación.</p>
-                <p class="mt-4 text-green-600 font-semibold text-sm">Ver detalles <i class="fas fa-arrow-right ml-1"></i></p>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Practicantes</h3>
+                <p class="text-gray-600 text-sm">Formatos exclusivos para prestadores de servicio y practicantes de CAPI y Tutorías.</p>
+                <p class="mt-4 text-green-600 font-semibold text-sm">Ver formularios <i class="fas fa-arrow-right ml-1"></i></p>
             </button>
 
-            <!-- Trámites Varios Card -->
-            <button onclick="openModal('tramites')" class="text-left glass-card rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 border-t-purple-500">
-                <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                    <i class="fas fa-file-alt text-2xl"></i>
+            <!-- Colaboradores Card -->
+            <button onclick="openModal('colaboradores')" class="text-left glass-card rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group border-t-4 border-t-red-500">
+                <div class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                    <i class="fas fa-shield-alt text-2xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800 mb-2">Trámites Varios</h3>
-                <p class="text-gray-600 text-sm">Gestión de constancias y reportes administrativos.</p>
-                <p class="mt-4 text-purple-600 font-semibold text-sm">Ver detalles <i class="fas fa-arrow-right ml-1"></i></p>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Docentes / Admin</h3>
+                <p class="text-gray-600 text-sm">Reportes de incidencias normativas, alertas conductuales y protocolos de violencia.</p>
+                <p class="mt-4 text-red-600 font-semibold text-sm">Ver protocolos <i class="fas fa-arrow-right ml-1"></i></p>
             </button>
 
         </div>
@@ -104,9 +110,10 @@
 
     <!-- Modal Template -->
     <div id="deptModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-        <div class="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl transform transition-all animate-in fade-in zoom-in duration-300">
+        <!-- Contenedor del modal con max-height para permitir scroll si hay muchos botones -->
+        <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl transform transition-all animate-in fade-in zoom-in duration-300">
             <!-- Modal Header -->
-            <div id="modalHeader" class="p-6 text-white flex justify-between items-center">
+            <div id="modalHeader" class="p-6 text-white flex justify-between items-center shrink-0 rounded-t-3xl">
                 <div class="flex items-center space-x-3">
                     <div id="modalIcon" class="text-2xl"></div>
                     <h3 id="modalTitle" class="text-2xl font-bold">Título</h3>
@@ -116,14 +123,13 @@
                 </button>
             </div>
             
-            <!-- Modal Content -->
-            <div class="p-8">
-                <div class="mb-8">
-                    <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">Sobre este departamento</h4>
-                    <p id="modalDescription" class="text-gray-700 leading-relaxed"></p>
+            <!-- Modal Content (Scrollable) -->
+            <div class="p-6 md:p-8 overflow-y-auto grow">
+                <div class="mb-6">
+                    <p id="modalDescription" class="text-gray-700 leading-relaxed text-sm md:text-base"></p>
                 </div>
                 
-                <div class="mb-6">
+                <div>
                     <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Formularios y Enlaces</h4>
                     <div id="modalLinks" class="space-y-3">
                         <!-- Links will be injected here -->
@@ -131,31 +137,32 @@
                 </div>
             </div>
 
-            <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-end">
-                <button onclick="closeModal()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition">Cerrar</button>
+            <!-- Modal Footer -->
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex justify-end shrink-0 rounded-b-3xl">
+                <button onclick="closeModal()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition">Cerrar panel</button>
             </div>
         </div>
     </div>
 
     <!-- Sección Informativa -->
-    <section class="bg-gray-100 py-16">
+    <section class="bg-white py-16 border-t border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
             <div class="w-full md:w-1/2">
                 <div class="rounded-2xl overflow-hidden shadow-2xl bg-white p-2">
-                    <img src="img/institucion.jpg" alt="Campus Institucional" class="w-full h-auto rounded-xl" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Campus Institucional" class="w-full h-auto rounded-xl">
                 </div>
             </div>
             <div class="w-full md:w-1/2 text-center md:text-left">
-                <h2 class="text-3xl font-bold text-blue-900 mb-4">Atención Integral</h2>
-                <p class="text-gray-700 text-lg mb-6">Esta plataforma es el canal oficial para canalizar tus necesidades a los departamentos correspondientes. Asegúrate de llenar los datos correctamente para agilizar tu respuesta.</p>
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Atención Integral y Confidencial</h2>
+                <p class="text-gray-700 text-lg mb-6">Esta plataforma es el canal oficial para canalizar tus necesidades a los departamentos correspondientes. Asegúrate de llenar los datos correctamente en los formularios de Google para agilizar tu respuesta.</p>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-4 rounded-xl shadow-sm">
-                        <p class="text-blue-600 font-bold text-2xl">24/7</p>
+                    <div class="bg-gray-50 border border-gray-100 p-4 rounded-xl shadow-sm">
+                        <p class="text-blue-600 font-bold text-2xl"><i class="fas fa-clock"></i> 24/7</p>
                         <p class="text-gray-500 text-sm">Disponibilidad</p>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm">
-                        <p class="text-blue-600 font-bold text-2xl">100%</p>
-                        <p class="text-gray-500 text-sm">Digital</p>
+                    <div class="bg-gray-50 border border-gray-100 p-4 rounded-xl shadow-sm">
+                        <p class="text-blue-600 font-bold text-2xl"><i class="fas fa-lock"></i> 100%</p>
+                        <p class="text-gray-500 text-sm">Seguro y Confidencial</p>
                     </div>
                 </div>
             </div>
@@ -163,50 +170,58 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contacto" class="bg-white border-t border-gray-200 pt-16 pb-8">
+    <footer id="contacto" class="bg-gray-900 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="mb-8">
-                <p class="font-bold text-gray-900 text-lg">Institución Educativa</p>
-                <p class="text-gray-500 italic">Departamento de Atención Estudiantil</p>
-                <p class="text-gray-500 mt-2">Calle Principal #123, Ciudad, País</p>
+                <p class="font-bold text-white text-lg">Centro de Atención Psicoterapéutica Integral (CAPI)</p>
+                <p class="text-gray-400 italic mt-1">Universidad Lamar Guadalajara</p>
             </div>
-            <div class="border-t border-gray-100 pt-8">
-                <p class="text-gray-400 text-sm">© 2024 Sistema de Reportes Institucionales.</p>
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-gray-500 text-sm">© 2024 Plataforma de Solicitudes y Reportes Institucionales.</p>
             </div>
         </div>
     </footer>
 
     <!-- Logic for Modals -->
     <script>
+        // Aquí están todos tus enlaces categorizados
         const departments = {
             capi: {
-                title: 'CAPI',
-                description: 'El Centro de Atención Psicoterapéutica Integral brinda apoyo emocional y psicológico. Puedes realizar reportes de bienestar o solicitar una cita de valoración inicial.',
+                title: 'Usuarios CAPI',
+                description: 'Servicios, solicitudes y atención psicopedagógica integral para la comunidad estudiantil. Selecciona el trámite que necesitas realizar:',
                 color: 'bg-blue-600',
-                icon: '<i class="fas fa-brain"></i>',
+                icon: '<i class="fas fa-users"></i>',
                 links: [
-                    { text: 'Solicitud de Cita Psicológica', url: 'https://forms.gle/ejemploCAPI1', icon: 'fa-calendar-plus' },
-                    { text: 'Reporte de Bienestar Estudiantil', url: 'https://forms.gle/ejemploCAPI2', icon: 'fa-heartbeat' }
+                    { text: 'Solicitud de Servicio CAPI', url: 'https://forms.gle/V4NtR2WmPgUZ31ir7', icon: 'fa-hand-holding-medical' },
+                    { text: 'Cuestionario Previo a la Entrevista', url: 'https://forms.gle/1moFVec2BwpWSQgWA', icon: 'fa-clipboard-list' },
+                    { text: 'Bitácora CAPI: Seguimiento y Evaluación', url: 'https://forms.gle/fAvfCFeWcL1pqFny8', icon: 'fa-tasks' },
+                    { text: 'Reporte Efectivo de Denuncia (Protocolo de Violencia)', url: 'https://forms.gle/vXuJwRwbJ3P48RAQ9', icon: 'fa-bullhorn', isAlert: true },
+                    { text: 'Contra Reporte Efectivo (Protocolo de Violencia)', url: 'https://forms.gle/xFzD49RfND57ubiV8', icon: 'fa-balance-scale', isAlert: true },
+                    { text: 'Directorio de Instituciones de Atención y Emergencia', url: '#', icon: 'fa-address-book' },
+                    { text: 'Registro Pláticas y Talleres (Intervención Primaria)', url: 'https://forms.gle/J9KGz7dBtmVr7pge7', icon: 'fa-chalkboard-teacher' },
+                    { text: 'Participación: Círculos de Paz U. Lamar', url: 'https://forms.gle/MwWGQgS4ZWJ5pGq2A', icon: 'fa-dove' },
+                    { text: 'Solicitud Cambio de Grupo CAPI - Vallarta', url: 'https://forms.gle/bWaH6hp8gAVoK4KF6', icon: 'fa-exchange-alt' },
+                    { text: 'Solicitud Cambio de Grupo CAPI - Palomar', url: 'https://forms.gle/gVAn1fQRnoUr1L5c8', icon: 'fa-exchange-alt' }
                 ]
             },
-            tutorias: {
-                title: 'Tutorías',
-                description: 'El departamento de tutorías se encarga de dar seguimiento a tu trayectoria académica. Aquí puedes reportar dificultades en materias o solicitar un tutor asignado.',
+            practicantes: {
+                title: 'Prestadores y Practicantes',
+                description: 'Formatos de observación y acompañamiento para prestadores de servicio y practicantes de CAPI y Tutorías.',
                 color: 'bg-green-600',
                 icon: '<i class="fas fa-user-graduate"></i>',
                 links: [
-                    { text: 'Registro de Solicitud de Tutor', url: 'https://forms.gle/ejemploTut1', icon: 'fa-user-plus' },
-                    { text: 'Reporte de Desempeño Académico', url: 'https://forms.gle/ejemploTut2', icon: 'fa-chart-line' }
+                    { text: 'Reporte de Observación de Ambientes Académicos y Tutorías', url: 'https://forms.gle/ic7tKTHE1wU9T7Tb7', icon: 'fa-eye' }
                 ]
             },
-            tramites: {
-                title: 'Trámites Varios',
-                description: 'Gestión administrativa general. Utiliza estos formularios para reportar incidencias administrativas o solicitar constancias específicas ante la coordinación.',
-                color: 'bg-purple-600',
-                icon: '<i class="fas fa-file-alt"></i>',
+            colaboradores: {
+                title: 'Docentes y Colaboradores',
+                description: 'Canal exclusivo para levantar reportes de incidencias normativas, alertas conductuales y accionar protocolos institucionales oficiales.',
+                color: 'bg-red-600',
+                icon: '<i class="fas fa-shield-alt"></i>',
                 links: [
-                    { text: 'Formulario de Solicitud General', url: 'https://forms.gle/ejemploGen1', icon: 'fa-paper-plane' },
-                    { text: 'Reporte de Incidencias', url: 'https://forms.gle/ejemploGen2', icon: 'fa-exclamation-triangle' }
+                    { text: 'Bitácora de Reportes de Incidencias y Faltas Normativas (Alerta Conductual)', url: 'https://forms.gle/hE515nwxZNf2qMSw8', icon: 'fa-exclamation-triangle', isAlert: true },
+                    { text: 'Reporte Efectivo de Denuncia (Protocolo de Violencia)', url: 'https://forms.gle/vXuJwRwbJ3P48RAQ9', icon: 'fa-bullhorn', isAlert: true },
+                    { text: 'Contra Reporte Efectivo (Protocolo de Violencia)', url: 'https://forms.gle/xFzD49RfND57ubiV8', icon: 'fa-balance-scale', isAlert: true }
                 ]
             }
         };
@@ -220,7 +235,7 @@
             document.getElementById('modalIcon').innerHTML = dept.icon;
             
             const header = document.getElementById('modalHeader');
-            header.className = `p-6 text-white flex justify-between items-center ${dept.color}`;
+            header.className = `p-6 text-white flex justify-between items-center shrink-0 rounded-t-3xl ${dept.color}`;
             
             const linksContainer = document.getElementById('modalLinks');
             linksContainer.innerHTML = '';
@@ -228,14 +243,21 @@
             dept.links.forEach(link => {
                 const a = document.createElement('a');
                 a.href = link.url;
-                a.target = '_blank';
-                a.className = 'flex items-center p-4 rounded-xl border border-gray-100 hover:bg-gray-50 hover:border-blue-200 transition group';
+                if(link.url !== '#') a.target = '_blank'; // Evita abrir pestaña nueva si no hay link
+                
+                // Si el link es un "Protocolo de Violencia" o "Alerta", lo pintamos sutilmente de rojo
+                let borderColor = link.isAlert ? 'border-red-200 hover:border-red-400 bg-red-50 hover:bg-red-100' : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50';
+                let iconBg = link.isAlert ? 'bg-red-100 text-red-600 group-hover:bg-red-600 group-hover:text-white' : 'bg-gray-100 text-gray-500 group-hover:bg-blue-600 group-hover:text-white';
+                
+                a.className = `flex items-center p-4 rounded-xl border transition-all group ${borderColor}`;
                 a.innerHTML = `
-                    <div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center mr-4 group-hover:bg-white group-hover:shadow-sm">
-                        <i class="fas ${link.icon} text-gray-500"></i>
+                    <div class="w-12 h-12 shrink-0 rounded-lg flex items-center justify-center mr-4 transition-colors ${iconBg}">
+                        <i class="fas ${link.icon} text-lg"></i>
                     </div>
-                    <span class="font-semibold text-gray-700">${link.text}</span>
-                    <i class="fas fa-chevron-right ml-auto text-gray-300"></i>
+                    <div class="link-text-container">
+                        <span class="font-semibold text-gray-800 block text-sm sm:text-base">${link.text}</span>
+                    </div>
+                    <i class="fas fa-external-link-alt ml-auto text-gray-300 group-hover:text-gray-500"></i>
                 `;
                 linksContainer.appendChild(a);
             });
@@ -252,7 +274,7 @@
             document.body.classList.remove('modal-active');
         }
 
-        // Close modal on escape key or click outside
+        // Cerrar modal con la tecla Esc o haciendo clic afuera
         window.onclick = function(event) {
             const modal = document.getElementById('deptModal');
             if (event.target == modal) closeModal();
